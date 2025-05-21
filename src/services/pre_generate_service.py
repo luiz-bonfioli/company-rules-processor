@@ -6,10 +6,10 @@ class PreGenerateService:
 
     def generate(self, data: List[dict[str, Any]]) -> List[dict[str, Any]]:
         for company in data:
-            self._set_pre_defined_features(company)
+            self.__set_pre_defined_features(company)
         return data
 
-    def _set_pre_defined_features(self, company: dict[str, Any]) -> None:
+    def __set_pre_defined_features(self, company: dict[str, Any]) -> None:
         founded_year = self.__parse_founded_year(company.get("founded_year"))
         company["company_age"] = self.__calculate_company_age(founded_year) if founded_year is not None else None
         company["usa_based_feature"] = self.__check_usa_based(company.get("headquarters_city"))
