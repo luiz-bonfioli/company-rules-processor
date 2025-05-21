@@ -7,6 +7,7 @@
     <list default="true" id="70a44b0f-11a3-4015-b530-2a2622791383" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controllers/company_controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/company_controller.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/database/database.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/database/database.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/core/database/schema.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/database/schema.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/models/import_response.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/import_response.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/repositories/company_repository.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/repositories/company_repository.py" afterDir="false" />
@@ -41,7 +42,7 @@
     &quot;Python tests.Python tests for test_company_controller.test_extract_json.executor&quot;: &quot;Debug&quot;,
     &quot;Python tests.Python tests for test_company_controller.test_import_json.executor&quot;: &quot;Run&quot;,
     &quot;Python tests.Python tests in test_company_controller.py.executor&quot;: &quot;Run&quot;,
-    &quot;Python.main.executor&quot;: &quot;Run&quot;,
+    &quot;Python.main.executor&quot;: &quot;Debug&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;feature/process-company&quot;,
     &quot;last_opened_file_path&quot;: &quot;/Users/luiz.bonfioli/Documents/github/company-rules-processor/src/commons&quot;,
@@ -134,7 +135,7 @@
     <option name="version" value="3" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/company_rules_processor$main.coverage" NAME="main Coverage Results" MODIFIED="1747853283937" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/company_rules_processor$main.coverage" NAME="main Coverage Results" MODIFIED="1747855285676" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/company_rules_processor$.coverage" NAME=" Coverage Results" MODIFIED="1747846722559" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/controllers" />
   </component>
 </project>

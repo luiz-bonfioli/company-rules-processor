@@ -33,10 +33,8 @@ async def import_company_data(
 
 
 @router.post('/process-company', response_model=str)
-async def process_company(urls: List[str], rules: List[Rule]):
-    for rule in rules:
-        print(rule)
-        print(rule.operation.get_type())
+async def process_company(urls: List[str], rules: List[Rule], company_service=Depends(get_company_service)):
+    company_service.process_company(urls, rules)
     return ""
 
 

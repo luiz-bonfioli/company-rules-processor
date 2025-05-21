@@ -1,6 +1,6 @@
 import psycopg2
 
-from src.core.database.schema import SCHEMA, SET_SCHEMA, COMPANY_DATA_TABLE, COMPANY_TABLE
+from src.core.database.schema import SCHEMA, SET_SCHEMA, COMPANY_DATA_TABLE
 
 
 class Database:
@@ -25,7 +25,6 @@ class Database:
         self.execute(SET_SCHEMA)
 
     def __create_tables(self):
-        self.execute(COMPANY_TABLE)
         self.execute(COMPANY_DATA_TABLE)
 
     def execute(self, command, values=None):
