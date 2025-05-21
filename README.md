@@ -46,3 +46,14 @@ cd infra
 ```bash
 docker-compose up -d
 ```
+
+```
+curl -i -X POST http://localhost:8080/v1/company/import-company-data \
+  -F "file=@./company-dataset.csv"
+```
+```
+curl -i -X POST http://localhost:8080/v1/company/import-company-data \
+  -H "Content-Type: application/json" \
+  -d '{"foo": "bar", "baz": 123}'
+```
+
