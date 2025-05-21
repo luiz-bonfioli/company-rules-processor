@@ -33,6 +33,13 @@ class Database:
         self.commit()
         cursor.close()
 
+    def fetch_one(self, command, values=None):
+        cursor = self.__connection.cursor()
+        cursor.execute(command, values)
+        result = cursor.fetchone()
+        cursor.close()
+        return result
+
     def execute_insert(self, command, values):
         cursor = self.__connection.cursor()
         cursor.execute(command, values)

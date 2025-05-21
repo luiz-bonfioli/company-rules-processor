@@ -1,9 +1,8 @@
 import json
-import uuid
 from typing import Any
 
 from src.core.database.database import Database
-from src.core.database.schema import UPSERT_DATA_IN_BATCH
+from src.core.database.schema import UPSERT_DATA_IN_BATCH, SELECT_COMPANY_BY_URL
 
 
 class CompanyRepository:
@@ -18,9 +17,5 @@ class CompanyRepository:
         ]
         return self.__db.execute_insert_many(UPSERT_DATA_IN_BATCH, values)
 
-    # def upsert_companies(self, data: list[CompanyInfo]):
-    #     values = [
-    #         (row.url, row.company_name)
-    #         for row in data
-    #     ]
-    #     return self.__db.execute_insert_many(UPSERT_COMPANIES_IN_BATCH, values)
+    def fetch_by_url(self, url: str):
+        return self.__db.fetch_one(SELECT_COMPANY_BY_URL, (url,))

@@ -11,3 +11,4 @@ UPSERT_DATA_IN_BATCH = """
                                     content = EXCLUDED.content;
                             """
 
+SELECT_COMPANY_BY_URL= "SELECT * FROM company.company_data WHERE url = %s;"
