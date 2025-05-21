@@ -32,10 +32,9 @@ async def import_company_data(
         raise HTTPException(status_code=415, detail="Unsupported Media Type")
 
 
-@router.post('/process-company', response_model=str)
+@router.post('/process-company')
 async def process_company(urls: List[str], rules: List[Rule], company_service=Depends(get_company_service)):
-    company_service.process_company(urls, rules)
-    return ""
+    return company_service.process_company(urls, rules)
 
 
 def __validate_file(file: Optional[UploadFile]) -> UploadFile:
