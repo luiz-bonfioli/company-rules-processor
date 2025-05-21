@@ -13,11 +13,11 @@ class CompanyService:
     def __init__(self, company_repository: CompanyRepository):
         self.__company_repository = company_repository
 
-    async def process_file(self, file: UploadFile):
+    async def import_file(self, file: UploadFile):
         data = await parse_csv_to_dict(file)
         return self.save_data(data)
 
-    def process_data(self, data: list[dict[str, Any]]):
+    def import_data(self, data: list[dict[str, Any]]):
         return self.save_data(data)
 
     def save_data(self, data: list[dict[str, Any]]):
