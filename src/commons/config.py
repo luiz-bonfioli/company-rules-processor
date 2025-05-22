@@ -1,5 +1,7 @@
 import os
 
+APP_DEFAULT_LOG_LEVEL = os.getenv("APP_DEFAULT_LOG_LEVEL", "DEBUG")
+
 WEB_SERVER_HOST = os.getenv("WEB_SERVER_HOST", "0.0.0.0")
 WEB_SERVER_PORT = int(os.getenv("WEB_SERVER_PORT", "8080"))
 
