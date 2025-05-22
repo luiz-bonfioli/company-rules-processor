@@ -39,10 +39,8 @@ python -m venv .venv
  pip install -r requirements.txt
 ```
 
-### Install infra (postgres)
-```bash
-cd infra
-```
+### Install using Docker
+
 ```bash
 docker-compose up -d
 ```

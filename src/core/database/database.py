@@ -27,12 +27,6 @@ class Database:
     def __create_tables(self):
         self.execute(COMPANY_DATA_TABLE)
 
-    def execute(self, command, values=None):
-        cursor = self.__connection.cursor()
-        cursor.execute(command, values)
-        self.commit()
-        cursor.close()
-
     def fetch_one(self, command, values=None):
         cursor = self.__connection.cursor()
         cursor.execute(command, values)
@@ -40,7 +34,14 @@ class Database:
         cursor.close()
         return result
 
-    def execute_insert(self, command, values):
+    def fetch_all(self, command, values=None):
+        cursor = self.__connection.cursor()
+        cursor.execute(command, values)
+        result = cursor.fetchall()
+        cursor.close()
+        return result
+
+    def execute(self, command, values: tuple = None):
         cursor = self.__connection.cursor()
         cursor.execute(command, values)
         self.commit()

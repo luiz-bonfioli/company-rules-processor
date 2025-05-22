@@ -4,6 +4,7 @@ from fastapi import APIRouter, UploadFile, File, Depends, HTTPException
 from starlette.requests import Request
 
 from src.core.context import get_company_service
+from src.models.companies_response import CompaniesResponse
 from src.models.import_response import ImportSummary
 from src.models.rules import Rule
 
@@ -14,8 +15,7 @@ router = APIRouter(prefix='/v1/company', tags=['Company'])
 async def import_company_data(
         request: Request,
         file: Optional[UploadFile] = File(None),
-        company_service=Depends(get_company_service)
-):
+        company_service=Depends(get_company_service)):
     content_type = request.headers.get("content-type", "")
 
     if "application/json" in content_type:
@@ -35,6 +35,11 @@ async def import_company_data(
 @router.post('/process-company')
 async def process_company(urls: List[str], rules: List[Rule], company_service=Depends(get_company_service)):
     return company_service.process_company(urls, rules)
+
+
+@router.get('/get-companies', response_model=CompaniesResponse)
+async def get_companies(company_service=Depends(get_company_service)):
+    return company_service.get_companies_previously_processed()
 
 
 def __validate_file(file: Optional[UploadFile]) -> UploadFile:
