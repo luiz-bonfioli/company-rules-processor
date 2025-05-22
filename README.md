@@ -40,6 +40,8 @@ python -m venv .venv
 ```
 
 ### Install using Docker
+docker build -t company-rules-processor .
+
 
 ```bash
 docker-compose up -d
@@ -53,5 +55,18 @@ curl -i -X POST http://localhost:8080/v1/company/import-company-data \
 curl -i -X POST http://localhost:8080/v1/company/import-company-data \
   -H "Content-Type: application/json" \
   -d '{"foo": "bar", "baz": 123}'
+```
+
+```
+curl -i -X GET http://localhost:8080/v1/company/get-companies
+  
+```
+```
+curl -i -X GET http://localhost:8080/status
+  
+```
+```
+curl -i -X GET http://localhost:8080/health
+  
 ```
 
