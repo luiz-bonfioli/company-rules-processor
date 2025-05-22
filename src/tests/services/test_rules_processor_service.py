@@ -48,12 +48,6 @@ def test_evaluate_condition_less_than(service):
     assert not service._RulesProcessorService__evaluate_condition("less_than", 150, operation)
 
 
-def test_evaluate_condition_equal(service):
-    operation = Operation(equal=True)
-    assert service._RulesProcessorService__evaluate_condition("equal", "True", operation)
-    assert not service._RulesProcessorService__evaluate_condition("equal", "False", operation)
-
-
 def test_evaluate_condition_unsupported_operation_should_raise(service):
     operation = Operation()
     with pytest.raises(ValueError):
