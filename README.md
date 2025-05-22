@@ -1,72 +1,175 @@
-# A Python API to process company data based on dynamic rules
+# Company Rules Processor
 
+A Python API to process company data based on dynamic, customizable rules.
+
+---
+
+## Features
+
+- Upload company datasets via CSV or JSON
+- Dynamically apply custom rules to process data
+- Lightweight and container-ready
+- Health and status endpoints for monitoring
+
+---
 
 ## Requirements
 
 - Python 3.11
-- Pip (for dependency management)
+- pip for dependency management
+- PostgreSQL (for data persistence)
+- Docker (optional, for containerized usage)
+
+---
 
 ## Installation
 
-To get started with this project, you'll need to have pip installed. If you don't have pip installed yet, you can install it by following these steps:
+### 1. Clone the Repository
 
-### Install Pip
+```bash
+git clone https://github.com/luiz-bonfioli/company-rules-processor.git
+cd company-rules-processor
+```
 
-You can install Pip using the following command:
+### 2. Install Pip (if needed)
 
 ```bash
 python -m ensurepip --upgrade
 ```
 
-### Install Postgresql
+### 3. Install PostgreSQL (MacOS example using Homebrew)
+
 ```bash
 brew install postgresql
 ```
 
-### Configure venv
+### 4. Create and Activate a Virtual Environment
+
 ```bash
 python -m venv .venv
+source .venv/bin/activate
 ```
 
-### Activate venv
-```bash
- source .venv/bin/activate
-```
-
-### Install Dependencies
+### 5. Install Python Dependencies
 
 ```bash
- pip install -r requirements.txt
+pip install -r requirements.txt
 ```
 
-### Install using Docker
+### 6. Install PyTest for tests
+
+```bash
+pip install pytest
+```
+
+---
+
+## Run with Docker
+
+You can run the application using Docker for easier setup.
+
+### Build Docker Image
+
+```bash
 docker build -t company-rules-processor .
+```
 
+### Run unit tests
+
+```bash
+pytest tests/
+```
+
+
+
+### Start Services
 
 ```bash
 docker-compose up -d
 ```
 
-```
+---
+
+## Example API Usage
+
+### Upload Company Data (CSV)
+
+```bash
 curl -i -X POST http://localhost:8080/v1/company/import-company-data \
-  -F "file=@./company-dataset.csv"
-```
-```
-curl -i -X POST http://localhost:8080/v1/company/import-company-data \
-  -H "Content-Type: application/json" \
-  -d '{"foo": "bar", "baz": 123}'
+  -F "file=@./assets/company-dataset.csv"
 ```
 
+### Upload Company Data (JSON)
+
+```bash
+curl -i -X POST http://localhost:8080/v1/company/import-company-data \
+  -H "Content-Type: application/json" \
+  -d '[
+        {
+          "url": "https://www.nexuswave.tech",
+          "is_saas": false,
+          "industry": "Software Development",
+          "company_age": 6,
+          "description": "Application development environment with seamless deployment across platforms, annual licensing and implementation services",
+          "company_name": "NexusWave Systems",
+          "founded_year": "2019",
+          "is_usa_based": false,
+          "total_employees": "52",
+          "employee_rowth_2Y": "61.5",
+          "headquarters_city": "Toronto (Canada)",
+          "employee_growth_1Y": "26.7",
+          "employee_growth_6M": "14.2",
+          "employee_locations": "{\"USA\": 15, \"Canada\": 31, \"UK\": 3, \"India\": 2, \"Brazil\": 1}"
+       }
+    ]'
 ```
+
+### Get All Companies
+
+```bash
 curl -i -X GET http://localhost:8080/v1/company/get-companies
-  
 ```
-```
+
+### Check Status Endpoint
+
+```bash
 curl -i -X GET http://localhost:8080/status
-  
 ```
+Response:
 ```
+{
+  "status": "ok",
+  "timestamp": "2025-05-22 15:45:56.407350",
+  "dependencies": {
+    "database": "ok"
+  }
+}
+```
+
+### Check Health Endpoint
+
+```bash
 curl -i -X GET http://localhost:8080/health
-  
+```
+Response
+```
+{
+  "status": "ok"
+}
+```
+
+---
+
+## Project Structure
+
+```bash
+.
+├── src/                     # Main application code
+├── assets/                  # Assets 
+├── tests/                   # Unit and integration tests
+├── Dockerfile
+├── docker-compose.yml
+├── requirements.txt
+└── README.md
 ```
 
