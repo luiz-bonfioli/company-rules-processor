@@ -43,12 +43,12 @@ class CompanyService:
     def get_companies_previously_processed(self) -> CompaniesResponse:
         companies_processed = self.__company_repository.get_companies_previously_processed()
         companies = []
-        for company in companies_processed:
-            companies.append(CompanyProcessed(url=company[0],
-                                              imported_data=company[2],
-                                              processed_variables=company[3],
-                                              imported_date=str(company[4]) if company[4] is not None else None,
-                                              last_processed_date=str(company[5]) if company[5] is not None else None))
+        for processed in companies_processed:
+            companies.append(CompanyProcessed(url=processed[0],
+                                              imported_data=processed[2],
+                                              processed_variables=processed[3],
+                                              imported_date=str(processed[4]) if processed[4] is not None else None,
+                                              last_processed_date=str(processed[5]) if processed[5] is not None else None))
 
         return CompaniesResponse(companies=companies)
 
