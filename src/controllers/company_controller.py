@@ -16,6 +16,17 @@ async def import_company_data(
         request: Request,
         file: Optional[UploadFile] = File(None),
         company_service=Depends(get_company_service)):
+    """
+    Endpoint to import company data from an uploaded CSV file or json data.
+
+    Args:
+        request (Request): The incoming HTTP request with json data.
+        file (Optional[UploadFile]): The uploaded CSV file containing company data.
+        company_service: Dependency-injected service for handling company-related logic.
+
+    Returns:
+        ImportSummary: A summary of the import operation.
+    """
     content_type = request.headers.get("content-type", "")
 
     if "application/json" in content_type:
@@ -34,11 +45,31 @@ async def import_company_data(
 
 @router.post('/process-company')
 async def process_company(urls: List[str], rules: List[Rule], company_service=Depends(get_company_service)):
+    """
+    Endpoint to process company data based on provided URLs and rules.
+
+    Args:
+        urls (List[str]): A list of URLs to process.
+        rules (List[Rule]): A list of rules to apply during processing.
+        company_service: Dependency-injected service for handling company-related logic.
+
+    Returns:
+        response: The result of the company processing operation.
+    """
     return company_service.process_company(urls, rules)
 
 
 @router.get('/get-companies', response_model=CompaniesResponse)
 async def get_companies(company_service=Depends(get_company_service)):
+    """
+    Endpoint to retrieve a list of previously processed companies.
+
+    Args:
+        company_service: Dependency-injected service for handling company-related logic.
+
+    Returns:
+        CompaniesResponse: A response containing the list of processed companies.
+    """
     return company_service.get_companies_previously_processed()
 
 
