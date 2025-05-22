@@ -3,9 +3,11 @@ from starlette.middleware.gzip import GZipMiddleware
 
 from src.controllers import company_controller, health_controller
 from src.core.context import get_database
+from src.core.exceptions.api_exception_handler import ExceptionHandler
 
 # FastAPI setup
 app = FastAPI()
+app.add_middleware(ExceptionHandler)
 app.add_middleware(GZipMiddleware)
 
 # Controllers setup
